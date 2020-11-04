@@ -35,6 +35,10 @@ db.connect((err) => {
   }
 });
 
+const fs = require('fs');
+const settingsJSON = fs.readFileSync('./app/settings.json');
+const settings = JSON.parse(settingsJSON);
+
 /* ----------------------- Routes ----------------------- */
 
 // Testing route
@@ -44,7 +48,7 @@ app.get('/', (req, res) => {
 
 // Read Settings
 app.get('/settings', (req, res) => {
-  
+  res.json(settings);
 });
 
 // Update Settings
